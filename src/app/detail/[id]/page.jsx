@@ -1,24 +1,20 @@
 
 import axios from "axios";
-// import { useRef } from "react";
+import Generate from "./generate";
+
 
 
 const detail = async ({ params }) => {
   const { id } = params;
   console.log("id is" + id);
- 
-  
- 
+ const res = await axios(`https://api.imgflip.com/get_memes`);
+  const meme=await res.data.data.memes;
+ console.log(meme);
+ const memeSelected = meme.find((meme) => meme.id === id);
 
   return (
     <>
-      <div>
-        <form method="post">
-        <input type="text" placeholder="Enter Text 1" />
-        <input type="text"placeholder="Enter Text 2" />
-        <button >Generate</button>
-        </form>
-      </div>
+     <Generate memeSelected={memeSelected}/>
     </>
   );
 };
