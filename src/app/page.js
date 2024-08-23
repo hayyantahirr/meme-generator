@@ -12,7 +12,7 @@ export default async function Home() {
       <p className="text-center text-lg opacity-60 mt-2 mb-6">
         Generate Your Memes with MemeVerse !
       </p>
-      <div className="flex flex-wrap justify-center gap-[35px] border-solid border-white border-2 mx-[50px] rounded-3xl border-opacity-35 ">
+      <div className="flex flex-wrap justify-center gap-[35px] border-solid border-white border-2 mx-[50px] rounded-3xl border-opacity-35 backdrop-blur-md bg-opacity-50">
         {products.map((item) => {
           return (
             <div className="flex flex-col items-center justify-center ">

@@ -69,7 +69,16 @@ const Generate = ({ memeSelected }) => {
 
   // Rendering the component UI
   return (
-    <div className="min-h-screen w-full bg-[#222630] flex flex-col items-center justify-center">
+    <div
+      className="min-h-screen flex flex-col items-center justify-center w-full h-full"
+      style={{
+        backgroundImage: `
+          radial-gradient(black 55%, transparent),
+          linear-gradient(135deg, red, orange, yellow, lime, cyan, blue, indigo, deeppink)
+        `,
+        backgroundSize: "100% 0.5%, contain",
+      }}
+    >
       <form
         method="post"
         onSubmit={generateMeme}
