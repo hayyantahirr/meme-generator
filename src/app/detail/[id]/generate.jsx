@@ -84,7 +84,7 @@ const Generate = ({ memeSelected }) => {
         className="flex flex-col items-center"
       >
         <h1 className="text-2xl mt-5 text-white">Generate A Meme Now !</h1>
-        
+
         <Image
           src={memeBrought.url}
           alt=""
@@ -131,7 +131,6 @@ const Generate = ({ memeSelected }) => {
         {/* Display the generated meme and download button if a meme is available */}
         {meme && (
           <>
-            
             <Image
               src={meme}
               alt="Generated Meme"
