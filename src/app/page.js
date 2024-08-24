@@ -1,4 +1,5 @@
 import axios from "axios"; // Importing axios for making HTTP requests
+import Image from "next/image";
 import Link from "next/link"; // Importing Link from Next.js to create navigable links
 
 // This is an async function named 'Home' that acts as the main component of this page
@@ -28,10 +29,22 @@ export default async function Home() {
         {/* Mapping over the 'products' array to create a card for each meme */}
         {products.map((item) => {
           return (
-            <div className="flex flex-col items-center justify-center ">
+            <div
+              key={item.id}
+              className="flex flex-col items-center justify-center "
+            >
               {/* Displaying the meme image */}
-              <img src={item.url} alt="" className="w-40 h-40 mt-5 " />
-
+              {/* <img src={item.url} alt="" className="w-40 h-40 mt-5 " /> */}
+              <Image
+                src={item.url}
+                alt=""
+                className="w-40 h-40 mt-5 "
+                width={0}
+                height={0}
+                sizes="100vw"
+                priority
+                // style={{ width: '10rem', height: '10rem' }}
+              />
               {/* Link to the detail page for creating a meme using this template */}
               <Link href={`detail/${item.id}`}>
                 <button className="btn btn-outline btn-primary mt-5 rounded-full mb-5">

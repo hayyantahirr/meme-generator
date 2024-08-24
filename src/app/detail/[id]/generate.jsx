@@ -3,6 +3,7 @@
 import axios from "axios"; // Importing axios for making HTTP requests
 import { useRef, useState } from "react"; // Importing hooks from React
 import Link from "next/link"; // Importing Link from Next.js for navigation
+import Image from "next/image";
 
 // The Generate component is responsible for creating and downloading memes
 const Generate = ({ memeSelected }) => {
@@ -83,7 +84,16 @@ const Generate = ({ memeSelected }) => {
         className="flex flex-col items-center"
       >
         <h1 className="text-2xl mt-5 text-white">Generate A Meme Now !</h1>
-        <img src={memeBrought.url} alt="" className="w-1/4 mt-5" />
+        
+        <Image
+          src={memeBrought.url}
+          alt=""
+          className="w-1/4 mt-5"
+          width={0}
+          height={0}
+          sizes="100vw"
+          priority
+        />
         <h1 className="text-2xl mt-5 text-white">“{memeBrought.name} Meme”</h1>
         <input
           type="text"
@@ -121,7 +131,16 @@ const Generate = ({ memeSelected }) => {
         {/* Display the generated meme and download button if a meme is available */}
         {meme && (
           <>
-            <img src={meme} alt="Generated Meme" className="w-1/4 mt-5" />
+            
+            <Image
+              src={meme}
+              alt="Generated Meme"
+              className="w-1/4 mt-5"
+              width={0}
+              height={0}
+              sizes="100vw"
+              priority
+            />
             <button
               type="button"
               onClick={downloadMeme}
