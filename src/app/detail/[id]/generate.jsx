@@ -1,5 +1,3 @@
-// Here’s your code with comments added to explain each part. Following the code, I'll provide a detailed explanation in the simplest way possible.
-
 "use client"; // Indicates this is a client-side component for Next.js
 
 import axios from "axios"; // Importing axios for making HTTP requests
