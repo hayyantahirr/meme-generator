@@ -53,7 +53,7 @@ const Generate = ({ memeSelected }) => {
         const url = URL.createObjectURL(blob); // Create a temporary URL for the blob
         const a = document.createElement("a"); // Create a link element to trigger the download
         a.href = url;
-        a.download = "generated-meme.jpg"; // Set the download filename
+        a.download = `generated-meme${memeBrought.id}.jpg`; // Set the download filename
         document.body.appendChild(a);
         a.click(); // Simulate a click to start the download
         document.body.removeChild(a); // Remove the link element after download
