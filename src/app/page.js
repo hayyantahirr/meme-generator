@@ -2,6 +2,20 @@ import axios from "axios"; // Importing axios for making HTTP requests
 import Image from "next/image";
 import Link from "next/link"; // Importing Link from Next.js to create navigable links
 
+// SEO WOrk
+export const metadata = {
+  title: "MemeVerse - Create Memes Online",
+  description:
+    "MemeVerse lets you choose templates, add text, and create memes instantly!",
+  keywords: ["MemeVerse", "Meme Generator", "Meme Maker", "Create Memes"],
+  openGraph: {
+    title: "MemeVerse - Create Memes Online",
+    description: "Choose templates, add text, and generate memes instantly!",
+    url: "https://meme-generator-hazel-nine.vercel.app/", // Replace with your live URL
+    images: ["/favicon-32x32.png"],
+    type: "website",
+  },
+};
 // This is an async function named 'Home' that acts as the main component of this page
 export default async function Home() {
   // Making an HTTP GET request to the Imgflip API to fetch a list of memes
@@ -16,6 +30,22 @@ export default async function Home() {
   // Returning the JSX that defines the structure of the webpage
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "MemeVerse",
+            url: "https://yourdomain.com",
+            applicationCategory: "EntertainmentApplication",
+            operatingSystem: "Web",
+            description:
+              "MemeVerse lets you create memes instantly with templates and text!",
+            screenshot: "https://yourdomain.com/preview-image.png",
+          }),
+        }}
+      />
       {/* Main heading of the webpage */}
       <h1 className="text-5xl text-center pt-8">MemeVerse</h1>
 

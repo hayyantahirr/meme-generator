@@ -4,6 +4,25 @@ import axios from "axios"; // Importing axios for making HTTP requests
 import { useRef, useState } from "react"; // Importing hooks from React
 import Link from "next/link"; // Importing Link from Next.js for navigation
 import Image from "next/image";
+export async function generateMetadata({ params }) {
+  const id = params.id;
+
+  // Optional: fetch data about the template if you have it
+  // const template = await fetchTemplateById(id);
+
+  return {
+    title: `MemeVerse - Generate Meme ${id}`,
+    description: `Generate funny memes using template ${id} on MemeVerse.`,
+    keywords: ["MemeVerse", "Meme Generator", "Generate Meme", "Meme Maker"],
+    openGraph: {
+      title: `MemeVerse - Generate Meme ${id}`,
+      description: `Generate funny memes using template ${id} on MemeVerse. a website whos purpose is solely for entertainment . best website for meme , meme generator `,
+      url: `https://meme-generator-hazel-nine.vercel.app/detail/${id}`,
+      images: [`/favicon-32x32.png`], // could be template-specific image
+      type: "website",
+    },
+  };
+}
 
 // The Generate component is responsible for creating and downloading memes
 const Generate = ({ memeSelected }) => {
@@ -78,6 +97,21 @@ const Generate = ({ memeSelected }) => {
         backgroundSize: "100% 0.5%, contain",
       }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: `MemeVerse - Template ${memeBrought.id}`,
+            url: `https://yourdomain.com/detail/${memeBrought.id}`,
+            applicationCategory: "EntertainmentApplication",
+            operatingSystem: "Web",
+            description: `Generate funny memes using template ${memeBrought.id} on MemeVerse.`,
+            screenshot: `https://yourdomain.com/templates/${memeBrought.id}.png`,
+          }),
+        }}
+      />
       <form
         method="post"
         onSubmit={generateMeme}
@@ -87,7 +121,7 @@ const Generate = ({ memeSelected }) => {
 
         <Image
           src={memeBrought.url}
-          alt=""
+          alt={memeBrought.name}
           className="w-1/4 mt-5"
           width={0}
           height={0}
